@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;																												
+using UnityEngine.UI;		
+
 public enum GameMode
 {                                                                                                          
     idle,
@@ -15,7 +16,8 @@ public class MissionDemolition : MonoBehaviour
     public Text uitShots; //	The	UIText_Shots	Text
     public Text uitButton; //	The	Text	on	UIButton_View
     public Vector3 castlePos; //	The	place	to	put	castles
-    public GameObject[] castles;            //	An	array	of	the	castles
+    public GameObject[] castles;          //	An	array	of	the	castles
+
     [Header("Set Dynamically")]
     public int level;                   //	The	current	level
     public int levelMax;        //	The	number	of	levels
@@ -56,11 +58,13 @@ public class MissionDemolition : MonoBehaviour
         UpdateGUI();
         mode = GameMode.playing;
     }
+
     void UpdateGUI()
     {
-        uitLevel.text = "Level:	" + (level + 1) + "of	" + levelMax;
-        uitShots.text = "Shots	Taken:	" + shotsTaken;
+        uitLevel.text = "Level:	" + (level + 1) + " of " + levelMax;
+        uitShots.text = "Shots Taken: " + shotsTaken;
     }
+
     void Update()
     {
         UpdateGUI();
@@ -89,17 +93,17 @@ public class MissionDemolition : MonoBehaviour
         showing = eView;
         switch (showing)
         {
-            case "Show	Slingshot":
+            case "Show Slingshot":
                 FollowCam.POI = null;
-                uitButton.text = "Show	Castle";
+                uitButton.text = "Show Castle";
                 break;
-            case "Show	Castle":
+            case "Show Castle":
                 FollowCam.POI = S.castle;
-                uitButton.text = "Show	Both";
+                uitButton.text = "Show Both";
                 break;
-            case "Show	Both":
+            case "Show Both":
                 FollowCam.POI = GameObject.Find("ViewBoth");
-                uitButton.text = "Show	Slingshot";
+                uitButton.text = "Show Slingshot";
                 break;
         }
     }
@@ -108,4 +112,4 @@ public class MissionDemolition : MonoBehaviour
     {                                                                                                                                                            
         S.shotsTaken++;
     }
-}
+}
